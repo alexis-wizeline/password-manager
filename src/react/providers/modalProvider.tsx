@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useState} from 'react';
-import PasswordModal from "../components/passwordModal";
+// import PasswordModal from "../components/passwordModal";
 
 interface ModalContext {
     open: boolean;
@@ -24,8 +24,6 @@ export const ModalProvider = ({ children }:ModalProviderProps) => {
 
     return (
         <ctx.Provider value={{open, setOpen}}>
-            // TODO: fix the modal to receive a children instead of the props
-            {open && <PasswordModal />}
             {children}
         </ctx.Provider>
     )
