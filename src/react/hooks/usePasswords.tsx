@@ -1,19 +1,22 @@
 import {useCallback, useEffect, useState} from 'react';
 
+import { Password } from '../../db/entities';
 
-const generateMockData = (quantity = 1):  Array<{ name: string, password: string}> => {
-    const result: Array<{ name: string, password: string }> = new Array<{ name: string, password: string }>();
+
+const generateMockData = (quantity = 1):  Array<Password> => {
+    const result: Array<Password> = new Array<Password>();
     for (let i = 1; i <= quantity; i++) {
-        result.push({ name: `https://is-a-huge-text.${i}.test`, password: `${(Math.random() * 10000).toString(36).replace('.', '')}`});
+        const password = new Password(`https://is-a-huge-text.${i}.test`,`${(Math.random() * 10000).toString(36).replace('.', '')}`)
+        result.push(password);
     }
     return result;
 }
 
 function usePasswords(): {
-    items: Array<{ name: string, password: string }>;
-    addItem: (item: { name: string, password: string }) => void;
+    items: Array<Password>;
+    addItem: (item: Password) => void;
 } {
-    const [items, setItems] = useState<Array<{ name: string; password: string }>>([]);
+    const [items, setItems] = useState<Array<Password>>([]);
 
     const getItems = useCallback((quantity: number) => {
         return generateMockData(quantity);
@@ -23,7 +26,7 @@ function usePasswords(): {
         setItems(getItems(3));
     }, [])
 
-    function addItem(item: { name: string; password: string }): void {
+    function addItem(item: Password): void {
         setItems([...items, item]);
     }
 

@@ -17,13 +17,13 @@ const DashBoard : React.ComponentType = () => {
             <div className="fixed inset-x-0 top-0 z-10 border-b border-gray-900 bg-sky-950 p-4">
                 <div className="flex items-center justify-between text-xl">
                     <input className="flex mt-1 rounded-full outline-2 outline-zinc-700" type="text" placeholder="name..."/>
-                    <OpenModalBtn onAccept={addItem} item={{password: '', name: ''}} />
+                    <OpenModalBtn onAccept={addItem} item={{password: '', webPage: ''}} />
                 </div>
             </div>
 
             <div className="grid grid-cols-3 min-h-dvh pt-20 gap-3 mx-4 pb-2">
                 {
-                    items.map(data => ( <PasswordCard data={data} key={data.name} />))
+                    items.map(data => ( <PasswordCard data={data} key={data.webPage} />))
                 }
             </div>
         </div>

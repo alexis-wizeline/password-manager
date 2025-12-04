@@ -3,17 +3,19 @@ import {Plus} from "lucide-react";
 import {useModal} from "../providers/modalProvider";
 import PasswordModal from "../components/passwordModal";
 
+import { Password } from '../../db/entities'
+
 
 
 interface OpenModalBtnProps {
-    onAccept: (item: { password: string, name: string }) => void;
-    item: { password: string, name: string };
+    onAccept: (item: Password) => void;
+    item: Password;
 }
 
 
 const OpenModalBtn = (props: OpenModalBtnProps) => {
     const { open, setOpen } = useModal();
-    const { onAccept, item = {name: '', password: ''}  } = props
+    const { onAccept, item  } = props
 
 
     return (

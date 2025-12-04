@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import {useModal} from "../providers/modalProvider";
 import {EyeIcon, EyeOff} from "lucide-react";
 
+import {Password} from "../../db/entities";
+
 
 interface PasswordModalProps {
-    onAccept: (item: {name: string, password: string}) => void;
-    item:  {name: string, password: string}
+    onAccept: (item: Password) => void;
+    item: Password;
 }
 
 const PasswordModal = ({ item, onAccept }: PasswordModalProps) => {
     const { setOpen } = useModal();
 
     const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
-    const [password, setPassword] = useState< {name: string, password: string}>({...item});
+    const [password, setPassword] = useState<Password>({...item});
 
     return (
         <div className="fixed inset-0 flex w-screen h-screen justify-center overflow-y-auto bg-zinc-950/50 px-2 py-2 z-30 items-center">
@@ -24,8 +26,8 @@ const PasswordModal = ({ item, onAccept }: PasswordModalProps) => {
                             <label htmlFor="webpage" className="block text-sm font-medium text-gray-500">Web page</label>
                             <div className="relative mt-1">
                                 <input className="flex-1 px-3 py-2 rounded-md bg-gray-800 border-gray-700 text-white placeholder:gray-500"
-                                       type="text" id="webpage" placeholder="https://facebook.com" value={password.name}
-                                       onChange={(e) => setPassword({...password, name: e.target.value})}/>
+                                       type="text" id="webpage" placeholder="https://facebook.com" value={password.webPage}
+                                       onChange={(e) => setPassword({...password, webPage: e.target.value})}/>
                             </div>
                         </div>
                         <div>
