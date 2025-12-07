@@ -8,7 +8,7 @@ import { Password } from '../../db/entities'
 
 
 interface OpenModalBtnProps {
-    onAccept: (item: Password) => void;
+    onAccept: (item: Password) => Promise<void>;
     item: Password;
 }
 

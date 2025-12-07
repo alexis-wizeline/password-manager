@@ -6,7 +6,7 @@ import {Password} from "../../db/entities";
 
 
 interface PasswordModalProps {
-    onAccept: (item: Password) => void;
+    onAccept: (item: Password) => Promise<void>;
     item: Password;
 }
 
@@ -49,9 +49,9 @@ const PasswordModal = ({ item, onAccept }: PasswordModalProps) => {
                             <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 font-medium rounded-lg border border-white/2 text-white shadow-2xs hover:cursor-default hover:bg-gray-800" onClick={() => setOpen(false)}>
                                 Cancel
                             </button>
-                            <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 font-medium rounded-lg border border-white/2 bg-gray-800 text-white hover:cursor-default hover:bg-gray-700" onClick={() => {
+                            <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 font-medium rounded-lg border border-white/2 bg-gray-800 text-white hover:cursor-default hover:bg-gray-700" onClick={async () => {
                                 setOpen(false)
-                                onAccept(password)
+                                await onAccept(password)
                             }}>
                                 Save changes
                             </button>

@@ -5,25 +5,31 @@ import { Password } from '../../db/entities';
 
 function usePasswords(): {
     items: Array<Password>;
-    addItem: (item: Password) => void;
+    addItem: (item: Password) => Promise<void>;
 } {
     const [items, setItems] = useState<Array<Password>>([]);
 
-    const getItems = useCallback(async (quantity: number) => {
-        return await window.passwordApi.getPasswords(quantity);
+    const getItems = useCallback(async () => {
+        return await window.passwordApi.getPasswords();
     }, [])
 
     useEffect(() => {
        async function setPasswords(): Promise<void> {
-            const passwords = await getItems(4)
+            const passwords = await getItems()
+           console.log('setPasswords', passwords)
            setItems(passwords);
        }
 
         setPasswords();
     }, [])
 
-    function addItem(item: Password): void {
-        setItems([...items, item]);
+    async function addItem(item: Password): Promise<void> {
+        const isAdded = await window.passwordApi.add(item);
+        console.log(isAdded);
+
+        const passwords = await getItems()
+        console.log(passwords);
+        setItems(passwords);
     }
 
 

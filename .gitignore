@@ -93,3 +93,8 @@ out/
 
 # webstorm
 .idea
+
+# REMOVE AFTER THE APP IS DONE
+temp-sqlite.db
+temp-sqlite.db-shm
+temp-sqlite.db-wal
