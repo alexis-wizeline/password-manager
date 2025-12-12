@@ -20,7 +20,7 @@ const defaultCtx: ModalContext = {
 const ctx = createContext<ModalContext>(defaultCtx);
 
 export const ModalProvider = ({ children }:ModalProviderProps) => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     return (
         <ctx.Provider value={{open, setOpen}}>
