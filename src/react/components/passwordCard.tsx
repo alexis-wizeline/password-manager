@@ -1,20 +1,20 @@
 import React from 'react';
 
-import {Password} from "../../db/entities";
+import { Password } from "../../db/entities";
 
 interface IPasswordProps {
     data: Password;
 }
 
-const PasswordCard = React.memo(({ data }:IPasswordProps) => {
+const PasswordCard = React.memo(({ data }: IPasswordProps) => {
 
-
-    console.log("this was rendered with", data.webPage);
 
 
     return (
-        <div className="border rounded-lg bg-sky-950 flex justify-center items-center hover:bg-sky-800 hover:cursor-pointer max-h-2/6">
-            <h3 className="font-bold font-sans text-3xl">{data.webPage}</h3>
+        <div className="group relative flex h-32 flex-col justify-center intems-center rounded-2xl border border-white/5
+        bg-zinc-900 p-6 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:bg-zinc-800/80 hover:shadow-2xl
+        hover:shadow-brand/10 hover:border-brand/20 cursor-pointer">
+            <h3 className="text-2xl font-bold tracking-tight text-white group-hover:text-brand transition-colors duration-300">{data.webPage}</h3>
         </div>
     )
 

@@ -1,2 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
+
+@theme {
+    --color-brand: #6366f1;
+    --color-surface: #18181b;
+    --color-bg: #09090b;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
